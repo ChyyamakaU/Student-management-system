@@ -5,10 +5,12 @@ constructor (fName, lName, email){
 this.firstName =fName
 this.lastName =lName
 this.myEmail = email
-this.studentid
+this.studentid= this.generatestudentid()
 }
 
-
+generatestudentid(){
+    return Math.floor(Math.random()*100)
+}
 
 
 
