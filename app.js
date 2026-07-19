@@ -1,4 +1,4 @@
-existingStudents = [
+studentsDatabase = [
     { firstName: "Philip", lastName: "Joesph", email: "phil@gmail.com", studentId: "ST-001", passWord: 3201, level: 100 },
     { firstName: "Grace", lastName: "Peter", email: "gra@gmail.com", studentId: "ST-002", passWord: 1092, level: 200 },
     { firstName: "Gift", lastName: "Joesph", email: "gift@gmail.com", studentId: "ST-003", passWord: 8734, level: 300 },
@@ -27,26 +27,26 @@ class StudenManagementSystem {
     }
 
     static signIn(email, passWord) {
-        let studentIn = existingStudents.find(studentsIn=> studentsIn.email=== email) 
-            if (!studentIn){
+        let student = studentsDatabase.find(studentsIn=> studentsIn.email=== email) 
+            if (!student){
 return "You are not a student, kindly signup"
         }
-        studentIn.isLoggedIn =true 
-        console.log(`Hello ${studentIn.firstName} ${studentIn.lastName}, Welcome to your Dashboard`)
-        return studentIn
+        student.isLoggedIn =true 
+        console.log(`Hello ${student.firstName} ${student.lastName}, Welcome to your Dashboard`)
+        return student
     
     }
 
-    // static signup(firstName, lastName, myEmail, myID, passWord, level) {
-    //     let student = existingStudents.find((students) => students.studentId === myID)
+    static signup(firstName, lastName, myEmail, myID, passWord, level) {
+        let student = studentsDatabase.find((studentsUp) => studentsUp.studentId === myID)
 
-    //     if (student) { return `Your details already exists in the database` }
-    //     // else { "Lets get you signed up!!" }
+        if (student) { return "Your details already exists in the database, kindly signin." }
+        // else { return "Lets get you signed up!!" }
 
-    //     let newStudent = new StudenManagementSystem(firstName, lastName, myEmail, myID, passWord, level)
-
-    //     return "You have sucessfully signed up, sign in now"
-    // }
+     let newStudent =   new StudenManagementSystem(firstName, lastName, myEmail, myID, passWord, level)
+studentsDatabase.push(newStudent)
+        return "You have sucessfully signed up, sign in now"
+    }
 
 }
 // let secondStudent = new StudenManagementSystem("John", "Doe", "John@gmail.com")
@@ -58,8 +58,8 @@ return "You are not a student, kindly signup"
 // console.log(fourtStudent)
 
 console.log(StudenManagementSystem.signIn("phil@gmail.com", 3201))
-// console.log(StudenManagementSystem.signup("Amaka", "Umu", "Amaka@gmail.com", "ST005", 1209, 100))
-// console.log(StudenManagementSystem.existingStudents)
+console.log(StudenManagementSystem.signup("Amaka", "Umu", "Amaka@gmail.com", "ST005", 1209, 100))
+console.log(studentsDatabase)
 
 
 
