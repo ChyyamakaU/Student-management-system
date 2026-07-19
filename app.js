@@ -21,30 +21,32 @@ class StudenManagementSystem {
         this.myID = myID
         this.password = myPassword
         this.level = level
-        this.isLoogedIn = false
+        this.isLoggedIn = false
         // this.studentId = this.generateStudentId()
         // StudenManagementSystem.existingStudents.push(this)
     }
 
     static signIn(email, passWord) {
-        let studentIn = existingStudents.find(studentsIn=> studentsIn.email=== email)
-        for (let student of StudenManagementSystem.existingStudents) {
-            if (student.email === email && student.passWord === passWord) {
-                return student;
-            } else { return "Incorrect Student email or password" }
+        let studentIn = existingStudents.find(studentsIn=> studentsIn.email=== email) 
+            if (!studentIn){
+return "You are not a student, kindly signup"
         }
+        studentIn.isLoggedIn =true 
+        console.log(`Hello ${studentIn.firstName} ${studentIn.lastName}, Welcome to your Dashboard`)
+        return studentIn
+    
     }
 
-    static signup(firstName, lastName, myEmail, myID, passWord, level) {
-        let student = existingStudents.find((students) => students.studentId === myID)
+    // static signup(firstName, lastName, myEmail, myID, passWord, level) {
+    //     let student = existingStudents.find((students) => students.studentId === myID)
 
-        if (student) { return `Your details already exists in the database` }
-        // else { "Lets get you signed up!!" }
+    //     if (student) { return `Your details already exists in the database` }
+    //     // else { "Lets get you signed up!!" }
 
-        let newStudent = new StudenManagementSystem(firstName, lastName, myEmail, myID, passWord, level)
+    //     let newStudent = new StudenManagementSystem(firstName, lastName, myEmail, myID, passWord, level)
 
-        return "You have sucessfully signed up, sign in now"
-    }
+    //     return "You have sucessfully signed up, sign in now"
+    // }
 
 }
 // let secondStudent = new StudenManagementSystem("John", "Doe", "John@gmail.com")
@@ -55,35 +57,35 @@ class StudenManagementSystem {
 // console.log(thirdStudent)
 // console.log(fourtStudent)
 
-// console.log(StudenManagementSystem.signIn("ST-001", 3201))
-console.log(StudenManagementSystem.signup("Amaka", "Umu", "Amaka@gmail.com", "ST005", 1209, 100))
-console.log(StudenManagementSystem.existingStudents)
+console.log(StudenManagementSystem.signIn("phil@gmail.com", 3201))
+// console.log(StudenManagementSystem.signup("Amaka", "Umu", "Amaka@gmail.com", "ST005", 1209, 100))
+// console.log(StudenManagementSystem.existingStudents)
 
 
 
-class StaffManagement {
+// class StaffManagement {
    
 
-    constructor(title, firstName, lastName, email, staffId, passWord, levelCoordinator) {
-        this.title = title
-        this.firstName = firstName
-        this.lastName = lastName
-        this.email = email
-        this.staffId = staffId
-        this.passWord = passWord
-        this.levelCoordinator = levelCoordinator
-    }
+//     constructor(title, firstName, lastName, email, staffId, passWord, levelCoordinator) {
+//         this.title = title
+//         this.firstName = firstName
+//         this.lastName = lastName
+//         this.email = email
+//         this.staffId = staffId
+//         this.passWord = passWord
+//         this.levelCoordinator = levelCoordinator
+//     }
 
-    static login(Id, passWord) {
-        for (let theStaff of StaffManagement.staff) {
+//     static login(Id, passWord) {
+//         for (let theStaff of StaffManagement.staff) {
 
-            if (theStaff.staffId === id && theStaff.levelCoordinator === passWord) {
-                return staff
-            } else { "You do nothave acess to this page" }
-        }
+//             if (theStaff.staffId === id && theStaff.levelCoordinator === passWord) {
+//                 return staff
+//             } else { "You do nothave acess to this page" }
+//         }
 
-    }
+//     }
 
-}
+// }
 
-console.log(StaffManagement.login("ST002", 2943))
+// console.log(StaffManagement.login("ST002", 2943))

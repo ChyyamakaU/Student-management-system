@@ -1,7 +1,7 @@
 let car = {
     brand: "Honda", model: "civic", year: 2018, owner: {name: "Amaka", city:"Jos"}, features: ["bluetooth", " camera"] }
 
-let cars = JSON.stringify(car, null, 2);
+let cars = JSON.stringify(car, 0, 10);
 console.log(cars)
 
 let myCar =JSON.parse (cars)
