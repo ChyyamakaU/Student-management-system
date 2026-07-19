@@ -107,7 +107,7 @@ return myStudents
 }
 
 
-// static updateRecord (id, levelCoordinator, ){}
+static updateRecord (id, levelCoordinator, ){}
 
 
 
