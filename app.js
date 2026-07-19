@@ -27,12 +27,13 @@ class StudenManagementSystem {
     }
 
     static signIn(email, passWord) {
-        let student = studentsDatabase.find(studentsIn => studentsIn.email === email)
+        let student = studentsDatabase.find(studentsIn => studentsIn.email === email && myPassword ===passWord)
         if (!student) {
             return "You are not a student, kindly signup"
         }
-        student.isLoggedIn = true
+      else{  student.isLoggedIn = true
         console.log(`Hello ${student.firstName} ${student.lastName}, Welcome to your Dashboard`)
+      }
         return student
 
     }
@@ -51,13 +52,11 @@ class StudenManagementSystem {
 }
 
 // console.log(StudenManagementSystem.signIn("phil@gmail.com", 3201))
-console.log(StudenManagementSystem.signup("Amaka", "Umu", "Amaka@gmail.com", "STU-005", 1209, 100))
-console.log(studentsDatabase)
-
-
-
+// console.log(StudenManagementSystem.signup("Amaka", "Umu", "Amaka@gmail.com", "STU-005", 1209, 100))
+// console.log(studentsDatabase)
 class StaffManagement {
 
+    static signedInStaff = null;
     constructor(title, firstName, lastName, email, staffId, password) {
         this.title = title
         this.firstName = firstName
@@ -65,19 +64,22 @@ class StaffManagement {
         this.email = email
         this.staffId = staffId
         this.passWord = password
-        this.isLoggedIn = false
+        this.isSignedIn = false
         // this.levelCoordinator = levelCoordinator
     }
 
     static signIn(email, password) {
-        let staff = staffDatabase.find(staffIn => staffIn.email === email && staffIn.passWord === password)
+        let staff = staffDatabase.find(staffIn => staffIn.email === email && staffIn.passWord === password )
         if (!staff) {
             return "You are not a staff, Kindly sign up"
         }
 
-        staff.isLoggedIn = true
+       else {staff.isSignedIn = true;
+        StaffManagement.signedInStaff = staff;
         console.log(`Hello ${staff.title} ${staff.firstName} ${staff.lastName}, Welcome to your Dashboard.`)
-        return staff
+       
+        }
+         return staff
     }
 
 static signUp (title, firstName, lastName, email, staffd, password){
@@ -89,16 +91,29 @@ let newstaaff = new StaffManagement(title, firstName, lastName, email, staffd, p
 staffDatabase.push(newstaaff)
 
 return `Hello ${title} ${firstName} ${lastName}, You have sucessfully signed up, sign in now.`
-
 }
 
 
+static viewStudents(){
+  
+if (!StaffManagement.signedInStaff) {
+        return "You are not signed in.";
+    }
 
+    let myStudents = studentsDatabase.filter(student =>
+        student.level === StaffManagement.signedInStaff.levelCoordinator
+    );
+return myStudents
+}
+
+
+// static updateRecord (id, levelCoordinator, ){}
 
 
 
 }
 
-// console.log(StaffManagement.signIn("jum@gmail.com", 2943))
-// console.log(StaffManagement.signUp("Miss", "Ada", "Igwe", "ada@gmail.com", "STA-006", 3671))
+console.log(StaffManagement.signIn("jum@gmail.com", 2943))
+console.log(StaffManagement.signUp("Miss", "Ada", "Igwe", "ada@gmail.com", "STA-006", 3671))
 // console.log(staffDatabase)
+console.log(StaffManagement.viewStudents())
