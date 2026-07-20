@@ -53,9 +53,10 @@ async function downloadData() {
         const myGrade = JSON.parse(grade);
 
 
-        console.log(myStudent.name)
-        console.log(myCourses.length)
-        console.log(myGrade.length)
+        console.log(`The student name is ${myStudent.name}`)
+
+        console.log(`The total number of courses is ${myCourses.length}`)
+        console.log(`The total number of grades is ${myGrade.length}`)
     }
     catch (e) {
         console.log(e.message)
