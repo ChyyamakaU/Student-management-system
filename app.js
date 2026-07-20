@@ -63,16 +63,28 @@ class StudenManagementSystem {
             return "Incorrect Password, please enter the correct password"
         }
         else (students.passWord = newPassword)
-            return "Your password has been successfully changed"
-        }
-    
+        return "Your have successfully changed your password"
+    }
+
+
+    static changeEmail(id, oldEmail, newEmail) {
+
+        let stdents = studentsDatabase.find(stdents => stdents.id === id);
+        if (!stdents) { return "Incorrect ID, enter correct ID to change email" }
+
+
+        if (stdents.email !== oldEmail) { return "You have entered an incorrect email address" }
+
+        else (stdents.email = newEmail)
+        { return "You have successfully changed your email " }
+    }
 
 }
 
 // console.log(StudenManagementSystem.signIn("phil@gmail.com", 3201))
 // console.log(StudenManagementSystem.signup("Amaka", "Umu", "Amaka@gmail.com", "STU-005", 1209, 100))
 // console.log(studentsDatabase)
-console.log(StudenManagementSystem.changePassword ("Hel@gmail.com", 8359, 4322))
+console.log(StudenManagementSystem.changePassword("Hel@gmail.com", 8359, 4322))
 class StaffManagement {
 
     static signedInStaff = null;
