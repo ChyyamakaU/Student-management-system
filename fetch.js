@@ -42,9 +42,9 @@ async function downloadData() {
     try {
         let [student, courses, grade] = await Promise.all(
             [
-                readfile("student.json", "utf8"),
-                readfile("courses.json", "utf8"),
-                readfile("grade.json", "utf8")
+                readFile("student.json", "utf8"),
+                readFile("courses.json", "utf8"),
+                readFile("grade.json", "utf8")
             ]
         );
 
